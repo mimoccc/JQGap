@@ -39,7 +39,7 @@ mount point of plugin javascript object ! importand, default window
 plugin can be called then window.<plugin_name>.<fnc_name>(<fnc_params>); 
 */
 @PhoneGapPlugin(appendTo = "window")
-public class MJDev extends Plugin
+public class <b>MJDev</b> extends Plugin
 {
   
 	/* 
@@ -78,7 +78,7 @@ public class MJDev extends Plugin
 	
 	static 
 	{ 
-		actions = new PluginFNCArray(MJDev.class); 
+		actions = new PluginFNCArray(<b>MJDev</b>.class); 
 	}
 	
 	@Override
