@@ -15,7 +15,10 @@ Plugins will be released later, need to refactore
 
 Example plugin:
 
-/*Plugin example*/
+/*
+Plugin example
+*/
+
 package eu.mjdev.phonegap.plugins;
 
 import org.json.JSONArray;
@@ -30,15 +33,22 @@ import eu.mjdev.phonegap.api.PluginFNCArray;
 import eu.mjdev.phonegap.api.PluginResult;
 import eu.mjdev.phonegap.api.PluginResult.Status;
 
+/* 
+mount point of plugin javascript object ! importand, default window
+plugin can be called then window.<plugin_name>.<fnc_name>(<fnc_params>); 
+*/
 @PhoneGapPlugin(appendTo = "window")
-// mount point of plugin javascript object ! importand, default window
-// plugin can be called then window.<plugin_name>.<fnc_name>(<fnc_params>);
 public class MJDev extends Plugin
 {
-  /* PLUGIN METHODS */
+  
+	/* 
+	PLUGIN METHODS 
+	*/
+  
 	@PhoneGapPluginFunction()
 	// this means that this is exportable javascript fnc
-	public PluginResult getAppDetails(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+	public PluginResult getAppDetails(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) 
+	{
 		try {
 			JSONObject r = new JSONObject();
 			Context cctx = ctx.getContext();
@@ -64,9 +74,19 @@ public class MJDev extends Plugin
 
 	/* Plugin defaults. Do not change, if You dont know what are you doing. */
 	static PluginFNCArray actions = null;
-	static { actions = new PluginFNCArray(MJDev.class); }
+	
+	static 
+	{ 
+		actions = new PluginFNCArray(MJDev.class); 
+	}
+	
 	@Override
 	public PluginFNCArray getActions() { return actions; }
+	
 	public PhoneGapInterface getContext() { return this.ctx; }
+	
 	public Plugin getPlugin() { return this; }
 }
+/* 
+thats all 
+*/
