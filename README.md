@@ -14,7 +14,7 @@ Release date : 25.2.2013
 Plugins will be released later, need to refactore
 
 Example plugin:
-
+(this is just example, may be not working, see source code for working stuffs)
 <pre>
 /****
 *** Plugin example
