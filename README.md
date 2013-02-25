@@ -6,18 +6,19 @@ JQGap
 Jquery based phonegap with selfregistration plugins
 Many improvements
 More usefull plugins
-
+<pre>
 ( 
 Just a working demo, a may be usefull cause it doesnt need phonegap.js dino and plugin 
 scripts to be included 
 )
 (( 
-	Part of msharp visual embeeded app framework of MSharp framework i am working on 
+	Part of msharp visual embeeded app framework called MSharp (.NET 4.0) i am working on 
+	
 ))
 
-Release date : 25.2.2013
+</pre>
 
-Plugins will be released later, need to refactore
+Plugins will be released later, need to refactor
 
 Example plugin:
 (this is just example, may be not working, see source code for working stuffs)
