@@ -15,9 +15,10 @@ Plugins will be released later, need to refactore
 
 Example plugin:
 
-/*
-Plugin example
-*/
+<pre>
+/****
+*** Plugin example
+****/
 
 package eu.mjdev.phonegap.plugins;
 
@@ -90,3 +91,4 @@ public class MJDev extends Plugin
 /* 
 thats all 
 */
+</pre>
