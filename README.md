@@ -15,6 +15,7 @@ Plugins will be released later, need to refactore
 
 Example plugin:
 
+/*Plugin example*/
 package eu.mjdev.phonegap.plugins;
 
 import org.json.JSONArray;
