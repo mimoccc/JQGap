@@ -22,7 +22,7 @@ Plugins will be released later, need to refactor
 
 Example plugin:
 (this is just example, may be not working, see source code for working stuffs)
-<code>
+<pre>
 /****
 *** Plugin example
 ****/
@@ -98,4 +98,4 @@ public class <b>MJDev</b> extends Plugin
 /* 
 thats all 
 */
-</code>
+</pre>
