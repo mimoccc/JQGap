@@ -2,27 +2,15 @@ package eu.mjdev.phonegap.plugins;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-//import android.content.ComponentName;
-//import android.content.Context;
-//import android.content.Intent;
-//import android.content.ServiceConnection;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
-//import android.location.Location;
-//import android.os.IBinder;
 import android.util.Base64;
-//import cz.ingenium.AssetTrack.AssetEvent;
 import eu.mjdev.app.R;
-//import eu.mjdev.gpslogger.GpsLoggingService;
-//import eu.mjdev.gpslogger.GpsLoggingService.GpsLoggingBinder;
-//import eu.mjdev.gpslogger.IGpsLoggerServiceClient;
-//import eu.mjdev.gpslogger.Session;
 import eu.mjdev.json.XML;
 import eu.mjdev.phonegap.HttpHandler;
 import eu.mjdev.phonegap.api.LOG;
@@ -36,49 +24,33 @@ import eu.mjdev.phonegap.api.PluginResult.Status;
 
 @PhoneGapPlugin(appendTo = "window")
 public class MJDev extends Plugin 
-//implements IGpsLoggerServiceClient 
 {
-
-	//private GpsLoggingService loggingService;
-
-	/* PLUGIN METHODS */
-
-	//private final ServiceConnection gpsServiceConnection = new ServiceConnection() {
-		//public void onServiceDisconnected(ComponentName name) {
-			//loggingService = null;
-		//}
-
-		//public void onServiceConnected(ComponentName name, IBinder binder) {
-			//loggingService = ((GpsLoggingService) ((GpsLoggingBinder) binder).getService());
-			//GpsLoggingService.SetServiceClient(MJDev.this);
-			//if (Session.isStarted()) {
-				//Location l = Session.getCurrentLocationInfo();
-				//OnLocationUpdate(l);
-			//}
-		//}
-	//};
-
 	@PhoneGapPluginFunction()
 	public PluginResult getAppDetails(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
 		try {
 			JSONObject r = new JSONObject();
-			r.put("name",        ctx.getContext().getString(R.string.app_name));
-			r.put("description", ctx.getContext().getString(R.string.app_description));
+			
+			Context actx = ctx.getContext();
+			
+			r.put("name",        actx.getString(R.string.app_name));
+			r.put("description", actx.getString(R.string.app_description));
 			r.put("logo",        getResImageAsString(ctx, R.drawable.icon));
-			r.put("api_url",     ctx.getContext().getString(R.string.api_url));
-			r.put("market_url",  ctx.getContext().getString(R.string.market_url));
-			r.put("author_name", ctx.getContext().getString(R.string.author_name));
-			r.put("author_email",ctx.getContext().getString(R.string.author_email));
-			r.put("author_url",  ctx.getContext().getString(R.string.author_url));
-			r.put("author_phone",ctx.getContext().getString(R.string.author_phone));
-			r.put("log_email",   ctx.getContext().getString(R.string.api_log_email));
-			r.put("log_url",     ctx.getContext().getString(R.string.api_log_url));
-			r.put("feedback_url",ctx.getContext().getString(R.string.api_feedback_url));
-			r.put("version",     ctx.getContext().getString(R.string.app_version));
-			r.put("mode",        ctx.getContext().getString(R.string.app_mode));
-			r.put("status",      ctx.getContext().getString(R.string.app_default_status));
+			r.put("api_url",     actx.getString(R.string.api_url));
+			r.put("market_url",  actx.getString(R.string.market_url));
+			r.put("author_name", actx.getString(R.string.author_name));
+			r.put("author_email",actx.getString(R.string.author_email));
+			r.put("author_url",  actx.getString(R.string.author_url));
+			r.put("author_phone",actx.getString(R.string.author_phone));
+			r.put("log_email",   actx.getString(R.string.api_log_email));
+			r.put("log_url",     actx.getString(R.string.api_log_url));
+			r.put("feedback_url",actx.getString(R.string.api_feedback_url));
+			r.put("version",     actx.getString(R.string.app_version));
+			r.put("mode",        actx.getString(R.string.app_mode));
+			r.put("status",      actx.getString(R.string.app_default_status));
+			
 			return (new PluginResult(Status.OK, r));
 		} catch (JSONException e) {
+			
 			return resultError(e.toString(), callbackId);
 		}
 	}
@@ -163,14 +135,7 @@ public class MJDev extends Plugin
 	}
 
 	@Override
-	public void onDestroy() {
-		// onMessage(this.getClass().getSimpleName(),
-		// "Destroying MJDev plugin");
-		// if (Session.isStarted()) {
-		// onMessage(this.getClass().getSimpleName(), "Stopping GPS log.");
-		// this.stopGPSLogging();
-		// }
-	}
+	public void onDestroy() {}
 
 	private static String getResImageAsString(PhoneGapInterface ctx, int imgid) {
 		try {

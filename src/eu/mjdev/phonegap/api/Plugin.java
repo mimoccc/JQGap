@@ -61,6 +61,9 @@ public abstract class Plugin implements IPlugin {
 	public PluginResult resultError(String message, String callbackId) {
 		return (new PluginResult(PluginResult.Status.ERROR, message));
 	}
+	public PluginResult resultOK(String callbackId) {
+		return (new PluginResult(PluginResult.Status.OK));
+	}
 	@Override
 	public PluginFNCArray getActions() { return actions; }
 }

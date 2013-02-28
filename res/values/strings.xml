@@ -2,8 +2,8 @@
 <resources>
     <string name="app_version">1.0</string>
     <string name="app_mode">release</string>
-    <string name="app_name">Ingenium-Demo</string>
-    <string name="app_description">ingenium demo application</string>
+    <string name="app_name">MjDev Demo</string>
+    <string name="app_description">MJDev demo application</string>
     <string name="app_default_status"></string>
     <string name="app_show_title">false</string>
     <string name="app_show_status">false</string>
@@ -18,21 +18,21 @@
     
     <string name="go">o</string>
     
-    <string name="api_url">http://ingenium.asp2.cz</string>
-    <string name="api_log_url">http://ingenium.asp2.cz/log</string>
-    <string name="api_log_email">support@ingenium.cz</string>
+    <string name="api_url">http://themeid.com/demo/responsive/</string>
+    <string name="api_log_url"></string>
+    <string name="api_log_email"></string>
     <string name="api_feedback_url"></string>
-    <string name="api_feedback_email">support@ingenium.cz</string>
+    <string name="api_feedback_email"></string>
     
     <string name="author_name">milan jurkulak</string>
-    <string name="author_email">milan.jurkulak@ingenium.cz</string>
-    <string name="author_url">http://ingenium.cz</string>
+    <string name="author_email">mimoccc@gmail.com</string>
+    <string name="author_url"></string>
     <string name="author_phone">00420720174175(CZE)</string>
     
     <string name="market_url"/>
     
     <!-- string name="gps_service_url">http://90.178.14.221:96/geotrackwebserver/default.aspx</string -->
-    <string name="gps_service_url">http://192.168.71.208/geotrackwebserver/default.aspx</string>
+    <string name="gps_service_url"></string>
     
     <string name="could_not_write_to_log">Could not write to specified log</string>
     

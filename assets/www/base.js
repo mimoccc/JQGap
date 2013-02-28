@@ -277,7 +277,7 @@ $(document).ready(function(){
 	  loading.hide();
 	  console.log(data);
       error.find('#text').html((data || 'no connection'));
-      error.fadeIn(function(){$(this).find('#data').center();});
+      error.show(function(){$(this).find('#data').center();});
       error.find('#image').blink({
         count        : 8,
         animationEnd : function(){

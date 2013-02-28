@@ -5,82 +5,99 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import eu.mjdev.phonegap.DroidGap;
 import eu.mjdev.phonegap.api.LOG;
+import eu.mjdev.phonegap.api.PhoneGapInterface;
+import eu.mjdev.phonegap.api.PhoneGapPlugin;
+import eu.mjdev.phonegap.api.PhoneGapPluginFunction;
 import eu.mjdev.phonegap.api.Plugin;
+import eu.mjdev.phonegap.api.PluginFNCArray;
 import eu.mjdev.phonegap.api.PluginResult;
 import java.util.HashMap;
 
-/**
- * This class exposes methods in DroidGap that can be called from JavaScript.
- */
+@PhoneGapPlugin(appendTo = "window")
 public class App extends Plugin {
 
-    /**
-     * Executes the request and returns PluginResult.
-     *
-     * @param action        The action to execute.
-     * @param args          JSONArry of arguments for the plugin.
-     * @param callbackId    The callback id used when calling back into JavaScript.
-     * @return              A PluginResult object with a status and message.
-     */
-    public PluginResult execute(String action, JSONArray args, String callbackId) {
-        PluginResult.Status status = PluginResult.Status.OK;
-        String result = "";
-
-        try {
-        	if (action.equals("clearCache")) {
-        		this.clearCache();
-        	}
-        	else if (action.equals("loadUrl")) {
-            	this.loadUrl(args.getString(0), args.optJSONObject(1));
-            }
-        	else if (action.equals("cancelLoadUrl")) {
-            	this.cancelLoadUrl();
-            }
-        	else if (action.equals("clearHistory")) {
-            	this.clearHistory();
-            }
-            else if (action.equals("backHistory")) {
-                this.backHistory();
-            }
-        	else if (action.equals("overrideBackbutton")) {
-            	this.overrideBackbutton(args.getBoolean(0));
-            }
-        	else if (action.equals("isBackbuttonOverridden")) {
-            	boolean b = this.isBackbuttonOverridden();
-            	return new PluginResult(status, b);
-            }
-        	else if (action.equals("exitApp")) {
-            	this.exitApp();
-            }
-            return new PluginResult(status, result);
-        } catch (JSONException e) {
-            return new PluginResult(PluginResult.Status.JSON_EXCEPTION);
+	@PhoneGapPluginFunction()
+	public PluginResult clearCache(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		try{
+			this.clearCache();
+			return this.resultOK(callbackId);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
         }
-    }
+	}
+	
+	@PhoneGapPluginFunction()
+	public PluginResult loadUrl(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		try{
+			this.loadUrl(args.getString(0), args.optJSONObject(1));
+			return this.resultOK(callbackId);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
+        }
+	}
+	
+	@PhoneGapPluginFunction()
+	public PluginResult cancelLoadUrl(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		try{
+			this.cancelLoadUrl();
+			return this.resultOK(callbackId);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
+        }
+	}
+	
+	@PhoneGapPluginFunction()
+	public PluginResult clearHistory(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		try{
+			this.clearHistory();
+			return this.resultOK(callbackId);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
+        }
+	}
+	
+	@PhoneGapPluginFunction()
+	public PluginResult backHistory(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		try{
+			this.backHistory();
+			return this.resultOK(callbackId);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
+		}
+	}
+	
+	@PhoneGapPluginFunction()
+	public PluginResult isBackbuttonOverridden(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		PluginResult.Status status = PluginResult.Status.OK; 
+		try{
+			this.overrideBackbutton(args.getBoolean(0));
+			boolean b = this.isBackbuttonOverridden();
+			return new PluginResult(status, b);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
+		}
+	}
+	
+	@PhoneGapPluginFunction()
+	public PluginResult exitApp(PhoneGapInterface ctx, Plugin p, JSONArray args, String callbackId) {
+		try{
+			this.exitApp();
+			return this.resultOK(callbackId);
+		} catch (Exception e) {
+			return this.resultError(e.getMessage(), callbackId);
+		}
+	}
 
-    //--------------------------------------------------------------------------
+	//--------------------------------------------------------------------------
     // LOCAL METHODS
     //--------------------------------------------------------------------------
 
-	/**
-	 * Clear the resource cache.
-	 */
 	public void clearCache() { ((DroidGap)this.ctx).clearCache(); }
 	
-	/**
-	 * Load the url into the webview.
-	 * 
-	 * @param url
-	 * @param props			Properties that can be passed in to the DroidGap activity (i.e. loadingDialog, wait, ...)
-	 * @throws JSONException 
-	 */
 	public void loadUrl(String url, JSONObject props) throws JSONException {
-		LOG.d("PhoneGapLog", "App.loadUrl("+url+","+props+")");
 		int wait = 0;
 		boolean openExternal = false;
 		boolean clearHistory = false;
-
-		// If there are properties, then set them on the Activity
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		if (props != null) {
 			JSONArray keys = props.names();
@@ -92,7 +109,6 @@ public class App extends Plugin {
 				else {
 					Object value = props.get(key);
 					if (value == null) {
-
 					} else if (value.getClass().equals(String.class)) {
 						params.put(key, (String)value);
 					} else if (value.getClass().equals(Boolean.class)) {
@@ -103,13 +119,9 @@ public class App extends Plugin {
 				}
 			}
 		}
-
-		// If wait property, then delay loading
 		if (wait > 0) {
 			try {
-				synchronized(this) {
-					this.wait(wait);
-				}
+				synchronized(this) {this.wait(wait);}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -131,4 +143,14 @@ public class App extends Plugin {
     public boolean isBackbuttonOverridden() { return ((DroidGap)this.ctx).bound; }
 
     public void exitApp() { ((DroidGap)this.ctx).endActivity(); }
+    
+	/* Plugin defaults. Change plugin class only !!! */
+	static PluginFNCArray actions = null;
+	static { actions = new PluginFNCArray(App.class); }
+	@Override
+	public PluginFNCArray getActions() { return actions; }
+	//@Override
+	public PhoneGapInterface getContext() { return this.ctx; }
+	//@Override
+	public Plugin getPlugin() { return this; }
 }
