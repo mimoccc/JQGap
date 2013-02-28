@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+  <plugins>
+    <plugin name="Accelerometer"         value="eu.mjdev.phonegap.plugins.AccelListener"/>
+    <plugin name="AccountList"           value="eu.mjdev.phonegap.plugins.AccountList"/>
+    <plugin name="App"                   value="eu.mjdev.phonegap.plugins.App"/>
+    <plugin name="Media"                 value="eu.mjdev.phonegap.plugins.AudioHandler"/>
+    <plugin name="BarcodeScanner"        value="eu.mjdev.phonegap.plugins.BarcodeScanner"/>
+    <plugin name="Battery"               value="eu.mjdev.phonegap.plugins.BatteryListener"/>
+    <plugin name="Camera"                value="eu.mjdev.phonegap.plugins.CameraLauncher"/>
+    <plugin name="Capture"               value="eu.mjdev.phonegap.plugins.Capture"/>
+    <plugin name="Compass"               value="eu.mjdev.phonegap.plugins.CompassListener"/>
+    <plugin name="Contacts"              value="eu.mjdev.phonegap.plugins.ContactManager"/>
+    <plugin name="Device"                value="eu.mjdev.phonegap.plugins.Device"/>
+    <plugin name="FileTransfer"          value="eu.mjdev.phonegap.plugins.FileTransfer"/>
+    <plugin name="File"                  value="eu.mjdev.phonegap.plugins.FileUtils"/>
+    <plugin name="Geolocation"           value="eu.mjdev.phonegap.plugins.GeoBroker"/>
+    <plugin name="MJDev"                 value="eu.mjdev.phonegap.plugins.MJDev" onload="true"/>
+    <plugin name="NetworkStatus"         value="eu.mjdev.phonegap.plugins.NetworkManager"/>
+    <plugin name="Notification"          value="eu.mjdev.phonegap.plugins.Notification"/>
+    <plugin name="StatusBarNotification" value="eu.mjdev.phonegap.plugins.StatusBarNotification"/>
+    <plugin name="Storage"               value="eu.mjdev.phonegap.plugins.Storage"/>
+    <plugin name="Temperature"           value="eu.mjdev.phonegap.plugins.TempListener"/>
+    <plugin name="TTS"                   value="eu.mjdev.phonegap.plugins.TTS"/>
+    <plugin name="Nfc"                   value="eu.mjdev.phonegap.plugins.Nfc"/>
+    <plugin name="GCM"                   value="eu.mjdev.phonegap.plugins.GCM"/>
+</plugins>

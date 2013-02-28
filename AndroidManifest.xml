@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:windowSoftInputMode="adjustPan"
+    package="eu.mjdev.app" 
+    android:versionName="test" 
+    android:versionCode="1">
+
+    <supports-screens
+      android:largeScreens="true"
+      android:normalScreens="true"
+      android:smallScreens="true"
+      android:resizeable="true"
+      android:anyDensity="true"
+      android:xlargeScreens="true"/>
+  
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.RECEIVE_SMS" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.RECORD_VIDEO"/>
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
+  <uses-permission android:name="android.permission.WRITE_CONTACTS" />   
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />   
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+  <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+  <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+  <uses-permission android:name="android.permission.BATTERY_STATS"/>
+  <uses-permission android:name="android.permission.CALL_PHONE"/>
+  <uses-permission android:name="android.permission.READ_OWNER_DATA"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission android:name="android.permission.SEND_SMS"/>
+  <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
+  <uses-permission android:name="android.permission.NFC" />
+  
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+  <uses-permission android:name="com.phonegap.gcm.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+  <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+  
+  <uses-feature android:name="android.hardware.camera" />
+  <uses-feature android:name="android.hardware.camera.autofocus" />
+  <uses-feature android:name="android.hardware.nfc" />
+    
+  <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10" android:maxSdkVersion="16"/>
+  
+  <application 
+      android:icon="@drawable/icon" 
+      android:label="@string/app_name" 
+      android:theme="@android:style/Theme.NoTitleBar"
+      android:allowBackup="true"
+      >
+      <activity 
+          android:name="eu.mjdev.app.Main"
+          android:label="@string/app_name" 
+          android:configChanges="orientation|keyboardHidden">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+      </activity>
+        
+      <!-- service android:name="eu.mjdev.phonegap.PhoneGapService" android:process=":remote" /-->
+      <!-- service android:name="eu.mjdev.gpslogger.GpsLoggingService" / -->
+      <!-- service android:name="eu.mjdev.phonegap.GCMIntentService" / -->
+      <!-- service android:name="eu.mjdev.restservice.ExecuteRequest" android:label="ExecuteRequest"/ -->
+       
+      <!--  receiver android:name="eu.mjdev.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+          <intent-filter>
+              <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+              <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+              <category android:name="com.phonegap.gcm" />
+          </intent-filter>
+      </receiver -->
+      
+      <!-- receiver android:name="eu.mjdev.gpslogger.AlarmReceiver"/ -->
+     
+    </application>
+</manifest>
